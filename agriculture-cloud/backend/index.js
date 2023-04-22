@@ -5,12 +5,13 @@ const cors=require('cors');
 const app=express();
 app.use(cors());
 const cookieParser=require('cookie-parser');
+const router=require('./routes');
 dotenv.config();
 app.use(express.json());
 app.use(cookieParser());
 
 connectDb();
-
+app.use('/api',router);
 app.get("/",(req,res)=>{
     res.send("API running");
 })
